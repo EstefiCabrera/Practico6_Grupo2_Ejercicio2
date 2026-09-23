@@ -21,7 +21,7 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
-        
+       GestionProductos();
         
         
         
@@ -72,11 +72,11 @@ icono.getIconHeight());
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 778, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+            .addGap(0, 604, Short.MAX_VALUE)
         );
 
         jMenu3.setText("Administración");
@@ -159,7 +159,7 @@ icono.getIconHeight());
         
         escritorio.removeAll();
          escritorio.repaint();
-         guiProducto pro= new guiProducto();
+         guiProducto pro= new guiProducto(); 
          pro.setVisible(true);
          escritorio.add(pro);
          escritorio.moveToFront(pro);
@@ -209,6 +209,11 @@ icono.getIconHeight());
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     // End of variables declaration//GEN-END:variables
+private void GestionProductos(){
 
-   
+listaProducto.add(new Producto(2351,"Poco Robanne",8599.75 ,12, Categoria.PERFUMERIA));
+
 }
+
+}
+
