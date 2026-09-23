@@ -5,6 +5,8 @@
 package practico6_grupo2_ejercicio2;
 
 import java.util.TreeSet;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  *
@@ -19,6 +21,31 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+ImageIcon icono = new ImageIcon(getClass().getResource("/img/icons8-Imagen-Escalera.png"));
+
+JLabel fondo = new JLabel(icono);
+
+fondo.setBounds(0,0,
+icono.getIconWidth(),
+icono.getIconHeight());
+
+        escritorio.add(fondo);
+        
+        
+        
+        
+        
+        
     }
 
     /**
@@ -40,7 +67,6 @@ public class Menu extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(700, 600));
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
@@ -56,6 +82,7 @@ public class Menu extends javax.swing.JFrame {
         jMenu3.setText("Administración");
 
         jMenuItem2.setText("Productos");
+        jMenuItem2.addActionListener(this::jMenuItem2ActionPerformed);
         jMenu3.add(jMenuItem2);
 
         jMenuBar2.add(jMenu3);
@@ -123,6 +150,29 @@ public class Menu extends javax.swing.JFrame {
          escritorio.add(bpr);
          escritorio.moveToFront(bpr);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        
+        
+        
+        
+        escritorio.removeAll();
+         escritorio.repaint();
+         guiProducto pro= new guiProducto();
+         pro.setVisible(true);
+         escritorio.add(pro);
+         escritorio.moveToFront(pro);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
