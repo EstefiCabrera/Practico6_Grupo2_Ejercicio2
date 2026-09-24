@@ -30,7 +30,6 @@ public static TreeSet<Producto> listaProducto = new TreeSet<>();
         initComponents();
     cargarCombo();
     armarCabecera();
-    
     }
 
     /**
@@ -95,7 +94,8 @@ public static TreeSet<Producto> listaProducto = new TreeSet<>();
 
         txtPrecio.addActionListener(this::txtPrecioActionPerformed);
 
-        ComboBoxRubro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboBoxRubro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "COMESTIBLE", "LIMPIEZA", "PERFUMERIA" }));
+        ComboBoxRubro.addActionListener(this::ComboBoxRubroActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -152,9 +152,11 @@ public static TreeSet<Producto> listaProducto = new TreeSet<>();
 
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-producto-usado-50.png"))); // NOI18N
         btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(this::btnNuevoActionPerformed);
 
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-caja-de-producto-de-pelo-corto-50.png"))); // NOI18N
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(this::btnGuardarActionPerformed);
 
         btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-marca-doble-30.png"))); // NOI18N
         btnActualizar.setText("Actualizar");
@@ -267,6 +269,34 @@ public static TreeSet<Producto> listaProducto = new TreeSet<>();
     private void txtPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPrecioActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+        int codigo = Integer.parseInt(txtCodigo.getText());
+        double precio = Double.parseDouble(txtPrecio.getText());
+        String descripcion = txtDescripcion.getText();
+        int stock = (int) SpinnerStock.getValue();
+        
+        String rubroTexto = (String) ComboBoxRubro.getSelectedItem();
+        Categoria rubro = Categoria.valueOf(rubroTexto);
+        
+        Producto producto = new Producto(codigo, descripcion, precio, stock, rubro);
+        
+        listaProducto.add(producto);
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        // TODO add your handling code here:
+        txtCodigo.setText("");
+        txtPrecio.setText("");
+        txtDescripcion.setText("");
+        SpinnerStock.setValue(0);
+        ComboBoxRubro.setSelectedItem(0);
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void ComboBoxRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxRubroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboBoxRubroActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
