@@ -52,6 +52,7 @@ private DefaultTableModel modelo= new DefaultTableModel(){
         jLabel3.setText("Rubro:");
 
         jcbRubro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbRubro.addActionListener(this::jcbRubroActionPerformed);
 
         jtProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -104,6 +105,23 @@ private DefaultTableModel modelo= new DefaultTableModel(){
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jcbRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbRubroActionPerformed
+        // TODO add your handling code here:
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jcbRubroActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -5,6 +5,7 @@
 package practico6_grupo2_ejercicio2;
 
 import java.util.TreeSet;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -272,6 +273,7 @@ public static TreeSet<Producto> listaProducto = new TreeSet<>();
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
+        try{
         int codigo = Integer.parseInt(txtCodigo.getText());
         double precio = Double.parseDouble(txtPrecio.getText());
         String descripcion = txtDescripcion.getText();
@@ -283,6 +285,43 @@ public static TreeSet<Producto> listaProducto = new TreeSet<>();
         Producto producto = new Producto(codigo, descripcion, precio, stock, rubro);
         
         listaProducto.add(producto);
+        
+          modelo.addRow(new Object []{
+                
+         producto.getCodigo(),
+            producto.getDescripcion(),
+                producto.getPrecio(),
+                producto.getRubro(),
+                producto.getStock()
+                
+                
+        });
+        
+       JOptionPane.showMessageDialog(rootPane, "El producto se guardo correctamente");
+        
+        
+       
+       
+       
+       }catch(NumberFormatException e){
+
+JOptionPane.showMessageDialog(this,"El Código y el Precio deben ser de tipo numéricos");
+
+}
+
+
+       
+       
+       
+       
+       
+       
+        
+        
+        
+        
+        
+        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
@@ -337,6 +376,7 @@ public static TreeSet<Producto> listaProducto = new TreeSet<>();
         modelo.addColumn("Codigo");
         modelo.addColumn("Descripcion");
         modelo.addColumn("Precio");
+         modelo.addColumn("Rubro");
         modelo.addColumn("Stock");
         jTableProductos.setModel(modelo);
     }
