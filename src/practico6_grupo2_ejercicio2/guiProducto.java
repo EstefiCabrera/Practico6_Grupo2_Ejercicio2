@@ -29,7 +29,7 @@ public static TreeSet<Producto> listaProducto = new TreeSet<>();
      */
     public guiProducto() {
         initComponents();
-    cargarCombo();
+   cargarCombo();
     armarCabecera();
     }
 
@@ -164,6 +164,7 @@ public static TreeSet<Producto> listaProducto = new TreeSet<>();
 
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/eliminar.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(this::btnEliminarActionPerformed);
 
         jTableProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -252,10 +253,7 @@ public static TreeSet<Producto> listaProducto = new TreeSet<>();
         // TODO add your handling code here:
         
        
-        
-        
-        
-        
+    
         
         
         
@@ -336,6 +334,28 @@ JOptionPane.showMessageDialog(this,"El Código y el Precio deben ser de tipo num
     private void ComboBoxRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxRubroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ComboBoxRubroActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        
+        
+        
+        int fila = jTableProductos.getSelectedRow();
+        
+        if( fila >= 0){
+        
+           
+            
+        modelo.removeRow(fila);
+        
+            JOptionPane.showMessageDialog(rootPane, "Producto eliminado");
+        
+            
+        }
+        
+        
+        
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
