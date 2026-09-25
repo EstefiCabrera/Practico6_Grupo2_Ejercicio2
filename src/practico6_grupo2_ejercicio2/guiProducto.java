@@ -150,6 +150,7 @@ public static TreeSet<Producto> listaProducto = new TreeSet<>();
 
         btnCerrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnCerrar.setText("Cerrar");
+        btnCerrar.addActionListener(this::btnCerrarActionPerformed);
 
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-producto-usado-50.png"))); // NOI18N
         btnNuevo.setText("Nuevo");
@@ -161,6 +162,7 @@ public static TreeSet<Producto> listaProducto = new TreeSet<>();
 
         btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-marca-doble-30.png"))); // NOI18N
         btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(this::btnActualizarActionPerformed);
 
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/eliminar.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
@@ -357,6 +359,69 @@ JOptionPane.showMessageDialog(this,"El Código y el Precio deben ser de tipo num
         
     }//GEN-LAST:event_btnEliminarActionPerformed
 
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btnCerrarActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        // TODO add your handling code here:
+        try {
+        int codigo = Integer.parseInt(txtCodigo.getText());
+        boolean encontrado = false;
+
+        for (Producto producto : listaProducto) {
+
+            if (producto.getCodigo() == codigo) {
+
+                // Tomar los datos modificados desde los campos
+                String descripcion = txtDescripcion.getText();
+                double precio = Double.parseDouble(txtPrecio.getText());
+                int stock = (int) SpinnerStock.getValue();
+
+                String rubroTexto = (String) ComboBoxRubro.getSelectedItem();
+                Categoria rubro = Categoria.valueOf(rubroTexto);
+
+                // Actualizar el objeto Producto
+                producto.setDescripcion(descripcion);
+                producto.setPrecio(precio);
+                producto.setStock(stock);
+                producto.setRubro(rubro);
+
+                // Buscar la fila correspondiente en la tabla
+                for (int i = 0; i < modelo.getRowCount(); i++) {
+
+                    if ((int) modelo.getValueAt(i, 0) == codigo) {
+
+                        // Modificar la fila existente
+                        modelo.setValueAt(descripcion, i, 1);
+                        modelo.setValueAt(precio, i, 2);
+                        modelo.setValueAt(rubro, i, 3);
+                        modelo.setValueAt(stock, i, 4);
+
+                        break;
+                    }
+                }
+
+                encontrado = true;
+                break;
+            }
+        }
+
+        if (encontrado) {
+            JOptionPane.showMessageDialog(rootPane,
+                    "El producto se actualizó correctamente");
+        } else {
+            JOptionPane.showMessageDialog(rootPane,
+                    "El código buscado no se ha encontrado");
+        }
+
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(rootPane,
+                "El Código y el Precio deben ser numéricos");
+    }
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboBoxCategorias;
@@ -400,7 +465,7 @@ JOptionPane.showMessageDialog(this,"El Código y el Precio deben ser de tipo num
         modelo.addColumn("Stock");
         jTableProductos.setModel(modelo);
     }
- 
+   
 
 
 }
