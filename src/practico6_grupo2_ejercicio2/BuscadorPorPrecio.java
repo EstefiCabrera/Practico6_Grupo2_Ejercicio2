@@ -53,6 +53,18 @@ private DefaultTableModel modelo= new DefaultTableModel(){
 
         jLabel4.setText("y");
 
+        jtPrecioMin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtPrecioMinKeyReleased(evt);
+            }
+        });
+
+        jtPrecioMax.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtPrecioMaxKeyReleased(evt);
+            }
+        });
+
         jtProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -116,6 +128,31 @@ private DefaultTableModel modelo= new DefaultTableModel(){
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jtPrecioMinKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtPrecioMinKeyReleased
+        // TODO add your handling code here:
+       borrarFilas();
+        precios();
+      
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jtPrecioMinKeyReleased
+
+    private void jtPrecioMaxKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtPrecioMaxKeyReleased
+
+        borrarFilas();
+        precios();
+
+
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtPrecioMaxKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -136,7 +173,46 @@ private DefaultTableModel modelo= new DefaultTableModel(){
         jtProducto.setModel(modelo);
     }
     
-  
+  private void borrarFilas(){
+        int filas= jtProducto.getRowCount()-1;
+        for (int f=filas;f>=0;f--) {
+            modelo.removeRow(f);
+        }
+    }
 
+private void precios(){
+
+ int precioMin = Integer.parseInt(jtPrecioMin.getText());
+       int precioMax = Integer.parseInt(jtPrecioMax.getText());
+       
+       
+       
+       
+       
+        for (Producto prod : guiProducto.listaProducto) {
+            
+            if(prod.getPrecio() >= precioMin && prod.getPrecio() >= precioMax ){
+            
+                modelo.addRow(new Object[]{prod.getCodigo(), prod.getDescripcion(),prod.getPrecio(), prod.getStock()}); 
+            
+            }
+            
+        }
+        
+        
+        
+        
+        
+        
+
+
+
+
+
+    
 
 }
+  
+  
+}
+

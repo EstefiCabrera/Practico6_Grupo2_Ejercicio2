@@ -48,6 +48,7 @@ private DefaultTableModel modelo= new DefaultTableModel(){
 
         jLabel2.setText("Escriba descripción:");
 
+        jtNombre.addActionListener(this::jtNombreActionPerformed);
         jtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jtNombreKeyReleased(evt);
@@ -117,13 +118,22 @@ private DefaultTableModel modelo= new DefaultTableModel(){
     private void jtNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtNombreKeyReleased
         // TODO add your handling code here:
         borrarFilas();
-        for (Producto prod : Menu.listaProducto) {
+        for (Producto prod : guiProducto.listaProducto) { /* cambie de Menu.listaProducto a guiProducto.listaProducto para que tome  la gestion de productos de ahi en vez de en la main class*/
             if(prod.getDescripcion().startsWith(jtNombre.getText())){
-                modelo.addRow(new Object[]{prod.getCodigo(), prod.getDescripcion(),prod.getPrecio(), prod.getStock()});         
+                modelo.addRow(new Object[]{prod.getCodigo(), prod.getDescripcion(),prod.getPrecio(), prod.getStock()});     
+                
+               
             }
         }                
     }//GEN-LAST:event_jtNombreKeyReleased
 
+    private void jtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtNombreActionPerformed
+
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

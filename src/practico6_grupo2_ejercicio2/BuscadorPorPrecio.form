@@ -104,8 +104,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jtPrecioMin">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtPrecioMinKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jtPrecioMax">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtPrecioMaxKeyReleased"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
